@@ -9,7 +9,9 @@ const ServicessDetails = async ({ params }) => {
     const service = await servicessSection.findOne({ _id: new ObjectId(id) })
     return (
         <div className="min-h-screen bg-gray-50 py-10 px-4 flex justify-center">
-            <div className="
+            <div className="max-w-4xl w-full bg-white shadow-lg rounded-2xl overflow-hidden">
+                {/* Banner / Image */}
+                <img
                     src={service.img}
                     alt={service.title}
                     className="w-full h-72 object-cover"
