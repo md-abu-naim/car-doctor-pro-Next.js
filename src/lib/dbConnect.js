@@ -1,6 +1,6 @@
 import { MongoClient, ServerApiVersion } from 'mongodb';
 
-const dbConnect = ({collectionName}) => {
+const dbConnect = (collectionName) => {
     const uri = `mongodb+srv://${process.env.MONOGDB_USER}:${process.env.MONGODB_PASS}@cluster0.zyfftle.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
     console.log(uri);
     // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -12,7 +12,7 @@ const dbConnect = ({collectionName}) => {
         }
     });
 
-    return client.db('car_doctor_pro').collection(collectionName)
+    return client.db("car_doctor_pro").collection(collectionName)
 };
 
 export default dbConnect;

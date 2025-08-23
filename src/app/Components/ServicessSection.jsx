@@ -164,12 +164,13 @@ const ServicessSection = async () => {
     //         ]
     //     }
     // ]
-    const data = await dbConnect('services').find().toArray()
+    const servicesCollection = dbConnect("services")
+    const data = await servicesCollection.find({}).toArray()
     console.log(data);
     return (
         <div className="grid grid-cols-1 text-black md:grid-cols-3 gap-4">
             {
-                data.map(s => <div key={s._id} className="max-w-sm bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition">
+                data?.map(s => <div key={s._id} className="max-w-sm bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition">
                     {/* Image */}
                     <Image width={314} height={208}
                         src={s.img}
