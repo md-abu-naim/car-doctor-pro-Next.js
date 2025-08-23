@@ -1,4 +1,4 @@
-import dbConnect from "@/lib/dbConnect";
+import dbConnect, { collectionNames } from "@/lib/dbConnect";
 import Image from "next/image";
 import { FaInfoCircle } from "react-icons/fa";
 
@@ -164,7 +164,7 @@ const ServicessSection = async () => {
     //         ]
     //     }
     // ]
-    const servicesCollection = dbConnect("services")
+    const servicesCollection = dbConnect(collectionNames.servicess)
     const data = await servicesCollection.find({}).toArray()
     console.log(data);
     return (
