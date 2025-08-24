@@ -11,7 +11,7 @@ const ServicessDetails = async ({ params }) => {
         <div className="min-h-screen bg-gray-50 py-10 px-4 flex justify-center">
             <div className="max-w-4xl w-full bg-white shadow-lg rounded-2xl overflow-hidden">
                 {/* Banner / Image */}
-                <img
+                <Image
                     src={service.img}
                     alt={service.title}
                     className="w-full h-72 object-cover"
@@ -48,6 +48,7 @@ const ServicessDetails = async ({ params }) => {
                         ))}
                     </ul>
                 </div>
+                <button>Book Now</button>
             </div>
         </div>
     );
