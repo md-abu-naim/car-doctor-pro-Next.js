@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono, Roboto } from "next/font/google";
 import "./globals.css";
 import Navber from "@/app/Components/Navber";
+import NextAuthProviders from "@/Providers/NextAuthProviders";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,12 +25,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme="white">
-      <body
-        className={`${roboto.className} antialiased bg-white text-black`}
-      >
-        <Navber />
-        {children}
-      </body>
+      <NextAuthProviders>
+        <body
+          className={`${roboto.className} antialiased bg-white text-black`}
+        >
+          <Navber />
+          {children}
+        </body>
+      </NextAuthProviders>
     </html>
   );
 }
