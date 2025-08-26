@@ -1,6 +1,19 @@
+"use client"
+import { signIn} from "next-auth/react"
+
 export default function LoginForm() {
+
+    const handleSubmit = async(e) => {
+        e.preventDefault()
+        const form = e.target
+        const email = form.email.value
+        const password = form.password.value
+        const user = {email, password}
+        await signIn('credentials', {email, password})
+        console.log(user);
+    }
     return (
-        <form className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4">
             <input name="email"
                 type="email"
                 placeholder="Email Address"
