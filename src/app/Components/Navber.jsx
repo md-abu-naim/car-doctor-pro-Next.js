@@ -38,7 +38,10 @@ const Navber = () => {
             </div>
             <div className="navbar-end">
                 {
-                    status === "authenticated" ? <button onClick={() => signOut()} className="btn ">LogOut</button>:
+                    status === "authenticated" ? <div className="flex items-center gap-3">
+                        <Image src={session?.user?.image} alt="" width={25} height={25} className="rounded-full" />
+                         <button onClick={() => signOut()} className="btn ">LogOut</button>
+                    </div>:
                     <div>
                         <Link href='/login' className="btn">Login</Link>
                         <Link href='/register' className="btn">Register</Link>
