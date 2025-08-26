@@ -1,7 +1,9 @@
 "use client"
 import { signIn } from "next-auth/react"
+// import { useRouter } from "next/navigation"
 
 export default function LoginForm() {
+    // const router = useRouter()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -9,7 +11,12 @@ export default function LoginForm() {
         const email = form.email.value
         const password = form.password.value
         const user = { email, password }
-        await signIn('credentials', { email, password })
+        try {
+            await signIn('credentials', { email, password, callbackUrl: '/'})
+            // router.push('/')
+        } catch (error) {
+            console.log(error);
+        }
     }
     return (
         <form onSubmit={handleSubmit} className="space-y-4">
