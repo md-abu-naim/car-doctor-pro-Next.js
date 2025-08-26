@@ -1,8 +1,17 @@
+"use client"
+
+import { signIn } from "next-auth/react";
 
 const SocialLogin = () => {
+    
+    const handleSocialLogin = async(providerName) => {
+        console.log(providerName);
+        const result = await signIn(providerName, {redirect: false})
+        console.log(result);
+    }
     return (
         <div className="space-y-3">
-          <button
+          <button onClick={() => handleSocialLogin('google')}
             type="button"
             className="w-full flex items-center justify-center gap-2 bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition"
           >
@@ -14,7 +23,7 @@ const SocialLogin = () => {
             Continue with Google
           </button>
 
-          <button
+          <button onClick={() => handleSocialLogin('github')}
             type="button"
             className="w-full flex items-center justify-center gap-2 bg-gray-800 text-white py-2 rounded-lg hover:bg-black transition"
           >
