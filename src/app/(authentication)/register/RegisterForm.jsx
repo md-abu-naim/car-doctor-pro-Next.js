@@ -1,15 +1,17 @@
 "use client"
 
+import RegisterUsers from "@/app/actions/auth/RegisterUsers";
+
 const RegisterForm = () => {
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault()
         const form = e.target
         const name = form.name.value
         const email = form.email.value
         const password = form.password.value
         const singUp = {email, name, password}
-        console.log(singUp);
+        await RegisterUsers(singUp);
     }
     return (
         <form onSubmit={handleSubmit} className="space-y-4">
