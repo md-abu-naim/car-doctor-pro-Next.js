@@ -10,7 +10,6 @@ export default function LoginForm() {
         const password = form.password.value
         const user = { email, password }
         await signIn('credentials', { email, password })
-        console.log(user);
     }
     return (
         <form onSubmit={handleSubmit} className="space-y-4">

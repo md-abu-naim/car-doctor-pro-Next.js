@@ -1,6 +1,7 @@
 import NextAuth from "next-auth"
 import GithubProvider from "next-auth/providers/github"
 import CredentialsProvider from "next-auth/providers/credentials"
+import LoginUser from "@/app/actions/auth/LoginUser";
 
 
 export const authOptions = {
@@ -18,15 +19,15 @@ export const authOptions = {
                 password: { label: "Password", type: "password" }
             },
             async authorize(credentials, req) {
-                console.log(credentials);
+                
                 // You need to provide your own logic here that takes the credentials
                 // submitted and returns either a object representing a user or value
                 // that is false/null if the credentials are invalid.
                 // e.g. return { id: 1, name: 'J Smith', email: 'jsmith@example.com' }
                 // You can also use the `req` object to obtain additional parameters
                 // (i.e., the request IP address)
-                const user = { id: 1, name: 'naim', email: 'naim@gmail.com' }
-
+                const user = await LoginUser(credentials)
+                console.log(user);
                 // If no error and we have user data, return it
                 if (user) {
                     return user
