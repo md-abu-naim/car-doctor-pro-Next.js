@@ -1,7 +1,11 @@
+"use client"
+
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 
 const Navber = () => {
+    const session = useSession()
 
     const navMenu = <>
         <li><Link href='/'>Home</Link></li>
@@ -33,6 +37,8 @@ const Navber = () => {
                 </ul>
             </div>
             <div className="navbar-end">
+                <Link href='/login' className="btn">Login</Link>
+                <Link href='/register'  className="btn">Register</Link>
                 <a className="btn btn-outline">Appointment</a>
             </div>
         </div>

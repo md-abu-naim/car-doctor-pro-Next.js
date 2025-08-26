@@ -7,15 +7,15 @@ const RegisterUsers = async (payload) => {
     const { email, password } = payload
     const userCollection = dbConnect(collectionNames.users)
 
-    if (!email, !password) return {success: false}
+    if (!email, !password) return null
     const user = await userCollection.findOne({ email })
-    if (user) return {success: false}
+    if (user) return null
     else {
         const passHassed = await bcrypt.hash(password, 10)
         payload.password = passHassed
         const result = await userCollection.insertOne(payload)
-        const {acknowledged, insertedId}= result
-        return {acknowledged, insertedId}
+        result.insertedId = result.insertedId.toString()
+        return result
     }
 };
 

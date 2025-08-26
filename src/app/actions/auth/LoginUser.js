@@ -7,9 +7,9 @@ const LoginUser = async(payload) => {
     const {email, password} = payload
     const userCollection = dbConnect(collectionNames.users)
     const user = await userCollection.findOne({email})
-    if(!user) return {success: false}
+    if(!user) return null
     const isPassOk = bcrypt.compare(user.password, password)
-    if(!isPassOk) return  {success: false}
+    if(!isPassOk) return null
     return user
 
 };
