@@ -1,8 +1,20 @@
-import React from 'react';
-
+"use client"
 const CheckoutForm = () => {
+    
+    const handleBooking = e => {
+        e.preventDefault()
+        const form = e.target
+        const name = form.name.value
+        const date = form.date.value
+        const email = form.email.value
+        const due = form.due.value
+        const phone = form.phone.value
+        const address = form.address.value
+        const book = { name, date, email, due, phone, address}
+        console.log(book);
+    }
     return (
-        <form className="space-y-4">
+        <form onSubmit={handleBooking} className="space-y-4">
             <input name='name'
                 type="text"
                 placeholder="Full Name"

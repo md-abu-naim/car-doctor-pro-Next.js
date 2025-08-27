@@ -1,4 +1,5 @@
 import React from 'react';
+import CheckoutForm from '../CheckoutForm';
 
 const Checkout = async ({ params }) => {
     const id = await params?.id
@@ -9,7 +10,7 @@ const Checkout = async ({ params }) => {
             <div className="w-full max-w-lg bg-white shadow-lg rounded-2xl p-6">
                 <h2 className="text-2xl font-bold mb-6 text-center">Checkout</h2>
 
-                <Checkout />
+                <CheckoutForm />
             </div>
         </div>
     );
