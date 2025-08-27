@@ -13,6 +13,7 @@ const Navber = () => {
         <li><Link href='/servicess'>Servicess</Link></li>
         <li><Link href='/blog'>Blog</Link></li>
         <li><Link href='/contact'>Contact</Link></li>
+        <li><Link href='/my-bookings'>My Bookings</Link></li>
     </>
     return (
         <div className="navbar text-black shadow-sm">
