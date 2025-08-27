@@ -53,7 +53,7 @@ const ServicessDetails = async ({ params }) => {
                         ))}
                     </ul>
                 </div>
-                <Link href={`checkout`} className="btn w-full">Checkout</Link>
+                <Link href={`/checkout/${service._id}`} className="btn w-full">Checkout</Link>
             </div>
         </div>
     );
