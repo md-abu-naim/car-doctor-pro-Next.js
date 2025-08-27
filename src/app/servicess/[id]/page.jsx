@@ -1,6 +1,7 @@
 import dbConnect, { collectionNames } from "@/lib/dbConnect";
 import { ObjectId } from "mongodb";
 import Image from "next/image";
+import Link from "next/link";
 
 const ServicessDetails = async ({ params }) => {
     const id = await params?.id
@@ -15,6 +16,7 @@ const ServicessDetails = async ({ params }) => {
                     src={service.img}
                     alt={service.title}
                     className="w-full h-72 object-cover"
+                    width={500} height={300}
                 />
 
                 {/* Body */}
@@ -48,7 +50,7 @@ const ServicessDetails = async ({ params }) => {
                         ))}
                     </ul>
                 </div>
-                <button>Book Now</button>
+                <Link href={`checkout`} className="btn w-full">Checkout</Link>
             </div>
         </div>
     );
