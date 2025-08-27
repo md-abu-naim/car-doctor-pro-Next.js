@@ -10,7 +10,7 @@ const ServicessDetails = async ({ params }) => {
     // const service = await servicessSection.findOne({ _id: new ObjectId(id) })
 
     const res = await fetch(`http://localhost:3000/api/service/${id}`)
-    const service = await res.json() 
+    const service = await res.json()
     return (
         <div className="min-h-screen bg-gray-50 py-10 px-4 flex justify-center">
             <div className="max-w-4xl w-full bg-white shadow-lg rounded-2xl overflow-hidden">
