@@ -1,7 +1,11 @@
 "use client"
-const CheckoutForm = () => {
-    
-    const handleBooking = e => {
+
+import { useSession } from "next-auth/react";
+
+const CheckoutForm = ({ service }) => {
+    const { data: session } = useSession()
+
+    const handleBooking = async (e) => {
         e.preventDefault()
         const form = e.target
         const name = form.name.value
@@ -10,13 +14,21 @@ const CheckoutForm = () => {
         const due = form.due.value
         const phone = form.phone.value
         const address = form.address.value
-        const book = { name, date, email, due, phone, address}
+        const book = { name, date, email, due, phone, address, service }
         console.log(book);
+
+        const res = await fetch(`http://localhost:3000/api/service`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(book),
+        })
+        const booking = await res.json()
+        console.log(booking);
     }
     return (
         <form onSubmit={handleBooking} className="space-y-4">
             <input name='name'
-                type="text"
+                type="text" defaultValue={session?.user?.name}
                 placeholder="Full Name"
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-green-300"
             />
@@ -28,7 +40,7 @@ const CheckoutForm = () => {
             />
 
             <input name='email'
-                type="email"
+                type="email" defaultValue={session?.user?.email}
                 placeholder="Email Address"
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-green-300"
             />
@@ -36,6 +48,7 @@ const CheckoutForm = () => {
             <input name='due'
                 type="number"
                 placeholder="Due Amount"
+                defaultValue={service.price}
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-green-300"
             />
 

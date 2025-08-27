@@ -8,9 +8,9 @@ const Checkout = async ({ params }) => {
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100 py-10 px-4">
             <div className="w-full max-w-lg bg-white shadow-lg rounded-2xl p-6">
-                <h2 className="text-2xl font-bold mb-6 text-center">Checkout</h2>
+                <h2 className="text-2xl font-bold mb-6 text-center">Checkout: {service.title}</h2>
 
-                <CheckoutForm />
+                <CheckoutForm service={service} />
             </div>
         </div>
     );
