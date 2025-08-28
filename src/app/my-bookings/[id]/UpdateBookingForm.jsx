@@ -2,7 +2,7 @@
 
 import { useSession } from "next-auth/react";
 
-const UpdateBookingForm = ({ service }) => {
+const UpdateBookingForm = ({ data }) => {
     const { data: session } = useSession()
 
     const handleBooking = async (e) => {
@@ -27,7 +27,7 @@ const UpdateBookingForm = ({ service }) => {
     return (
         <form onSubmit={handleBooking} className="space-y-4">
             <input name='name'
-                type="text" defaultValue={session?.user?.name}
+                type="text" defaultValue={data.name}
                 placeholder="Full Name"
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-green-300"
             />
@@ -35,11 +35,12 @@ const UpdateBookingForm = ({ service }) => {
             <input name='date'
                 type="date"
                 placeholder="Date"
+                defaultValue={data.date}
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-green-300"
             />
 
             <input name='email'
-                type="email" defaultValue={session?.user?.email}
+                type="email" defaultValue={data.email}
                 placeholder="Email Address"
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-green-300"
             />
@@ -47,19 +48,19 @@ const UpdateBookingForm = ({ service }) => {
             <input name='due'
                 type="number"
                 placeholder="Due Amount"
-                defaultValue={service.price}
+                defaultValue={data.due}
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-green-300"
             />
 
             <input name='phone'
-                type="tel"
+                type="tel" defaultValue={data.phone}
                 placeholder="Phone Number"
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-green-300"
             />
 
             <textarea name='address'
                 placeholder="Address"
-                rows="3"
+                rows="3" defaultValue={data.address}
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-green-300"
             ></textarea>
 
