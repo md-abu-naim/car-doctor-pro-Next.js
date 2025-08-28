@@ -26,7 +26,7 @@ const BookingsTable = ({ data }) => {
                             <button className="bg-blue-500 text-white px-3 py-1 rounded-lg hover:bg-blue-600">
                                 Edit
                             </button>
-                            <DeleteBooking />
+                            <DeleteBooking data={d} />
                         </td> 
                     </tr>)
                 }

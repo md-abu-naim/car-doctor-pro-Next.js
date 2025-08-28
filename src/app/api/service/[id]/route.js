@@ -14,11 +14,11 @@ export const GET = async (req, { params }) => {
 export const DELETE = async(req, {params}) => {
     const id = await params
     const bookingCollecion = dbConnect(collectionNames.booking)
-    const session = getServerSession(authOptions)
+    const session = await getServerSession(authOptions)
     const query = {_id: new ObjectId(id.id)}
 
     const currentBooking = await bookingCollecion.findOne(query)
-    const isWonerOk = currentBooking.email == session?.user?.email
+    const isWonerOk = session?.user?.email == currentBooking.email
 
     if(isWonerOk){
         const result = await bookingCollecion.deleteOne(query)
