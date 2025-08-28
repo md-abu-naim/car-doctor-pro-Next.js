@@ -4,7 +4,7 @@ import BookingsTable from "../Components/Table";
 
 export const fetcing = async () => {
     const res = await fetch('http://localhost:3000/api/service', {
-        headers: headers()
+        headers: await headers()
     })
     const data = await res.json()
     return data

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { DeleteBooking } from "../my-bookings/btns";
 
 const BookingsTable = ({ data }) => {
@@ -23,9 +24,9 @@ const BookingsTable = ({ data }) => {
                         <td className="px-4 py-2">{d.service.price}</td>
                         <td className="px-4 py-2">{d.address}</td>
                         <td className="px-4 py-2 flex items-center justify-center text-center space-x-2">
-                            <button className="bg-blue-500 text-white px-3 py-1 rounded-lg hover:bg-blue-600">
+                            <Link href={`/my-bookings/${d._id}`} className="bg-blue-500 text-white px-3 py-1 rounded-lg hover:bg-blue-600">
                                 Edit
-                            </button>
+                            </Link>
                             <DeleteBooking data={d} />
                         </td> 
                     </tr>)
