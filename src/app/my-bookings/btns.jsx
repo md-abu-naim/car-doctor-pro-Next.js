@@ -3,12 +3,12 @@
 import { useRouter } from "next/navigation";
 
 
-export const DeleteBooking = ({data}) => {
+export const DeleteBooking = ({ data }) => {
     const router = useRouter()
-    
-    const handleDelete = async(id) => {
+
+    const handleDelete = async (id) => {
         console.log(id);
-        const res = await fetch(`http://localhost:3000/api/service/${id}`,{
+        const res = await fetch(`http://localhost:3000/api/service/${id}`, {
             method: "DELETE",
         })
         const deleteBook = await res.json()
