@@ -1,7 +1,10 @@
 "use client"
 
+import { useRouter } from "next/navigation";
+
 
 export const DeleteBooking = ({data}) => {
+    const router = useRouter()
     
     const handleDelete = async(id) => {
         console.log(id);
@@ -9,6 +12,7 @@ export const DeleteBooking = ({data}) => {
             method: "DELETE",
         })
         const deleteBook = await res.json()
+        router.refresh()
         console.log(deleteBook);
     }
     return (

@@ -2,6 +2,7 @@ import { authOptions } from "@/lib/authOptions"
 import dbConnect, { collectionNames } from "@/lib/dbConnect"
 import { ObjectId } from "mongodb"
 import { getServerSession } from "next-auth"
+import { revalidatePath } from "next/cache"
 import { NextResponse } from "next/server"
 
 export const GET = async (req, { params }) => {
@@ -22,6 +23,7 @@ export const DELETE = async(req, {params}) => {
 
     if(isWonerOk){
         const result = await bookingCollecion.deleteOne(query)
+        revalidatePath('/my-bookings')
         return NextResponse.json(result)
     }else{
         return NextResponse.json({success: false, message: 'forbidden access'}, {status: 401})

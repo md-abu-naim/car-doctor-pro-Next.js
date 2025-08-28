@@ -1,19 +1,18 @@
-"use client"
 
-import { useEffect, useState } from "react";
+import { headers } from "next/headers";
 import BookingsTable from "../Components/Table";
 
-const MyBookings =  () => {
-    const [data, setData] = useState([])
+export const fetcing = async () => {
+    const res = await fetch('http://localhost:3000/api/service', {
+        headers: headers()
+    })
+    const data = await res.json()
+    return data
+}
 
-    useEffect(() => {
-        const fetcing = async () => {
-            const res = await fetch('http://localhost:3000/api/service')
-            const data = await res.json()
-            setData(data);
-        }
-        fetcing()
-    }, [])
+const MyBookings = async() => {
+    const data = await fetcing()
+    
     return (
         <div className="min-h-screen bg-gray-100 py-10 px-4">
             <div className=" bg-white shadow-lg rounded-2xl p-6">
